@@ -8,6 +8,7 @@ import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.preference.PreferenceManager;
 
 import android.view.View;
 
@@ -37,6 +38,9 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        PreferenceManager.setDefaultValues(this, R.xml.header_preferences, false);
+
     }
 
     @Override
@@ -68,6 +72,10 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             case R.id.action_status:
                 displayToast(getString(R.string.action_status_message));
+                return true;
+            case R.id.action_settings:
+                Intent settingsIntent = new Intent(this, SettingsActivity.class);
+                startActivity(settingsIntent);
                 return true;
             default:
 
